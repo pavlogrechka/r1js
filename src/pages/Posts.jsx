@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { usePosts } from './hooks/usePosts';
-import PostsList from './components/PostsList';
-import PostForm from './components/PostForm';
-import PostFilter from './components/PostFilter';
-import MyModal from './UI/MyModal/MyModal';
-import MyButton from './UI/buttons/MyButton';
-import PostService from './API/PostService';
-import Loader from './UI/Loader/Loader';
-import { useFetching } from './hooks/useFetching';
-import { getPageCount, getPagesArray } from './utils/pages';
-import './styles/App.css';
-import Pagination from './UI/pagination/Pagination';
+import PostService from '../API/PostService';
+import PostFilter from "../components/PostFilter";
+import PostForm from "../components/PostForm";
+import PostsList from "../components/PostsList";
+import { useFetching } from '../hooks/useFetching';
+import { usePosts } from '../hooks/usePosts';
+import MyButton from '../UI/buttons/MyButton';
+import Loader from "../UI/Loader/Loader";
+import MyModal from "../UI/MyModal/MyModal";
+import Pagination from "../UI/pagination/Pagination";
+import { getPageCount } from '../utils/pages';
+
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -21,19 +21,12 @@ function Posts() {
   const [page, setPage] = useState(1)
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query)
 
-  // TODO use useMemo to prevent recalculating on every page render
-  // and recalculating only when pages quantity was changed
-  
-  // console.log([pagesArray])
-
   const [fetchPosts, isPostLoading, postError] = useFetching( async (limit, page) => {
     const response = await PostService.getAll(limit, page)
     setPosts(response.data)
     const totalCount = response.headers['x-total-count']
     setTotalPages(getPageCount(totalCount, limit))
   })
-
-  // console.log(totalPages)
 
   useEffect(() => {
     fetchPosts(limit, page)

@@ -13,6 +13,12 @@ code {
     monospace;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .post__content-body {
   margin-bottom: 10px;
 }
@@ -38,4 +44,18 @@ code {
 .post-exit-active {
   transform: translateX(-350px);
   transition: all 500ms ease-in;
+}
+
+.navbar {
+  height: 50px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 15px;
+  background-color: lightgray;
+}
+
+.navbar__links a{
+  margin-right: 15px;
 }
