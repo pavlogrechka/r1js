@@ -13,6 +13,15 @@ code {
     monospace;
 }
 
+.post__content-body {
+  margin-bottom: 10px;
+}
+
+.posts__wrapper {
+  margin-bottom: 30px;
+}
+
+
 .post-enter {
   transform: translateX(-350px);
 }

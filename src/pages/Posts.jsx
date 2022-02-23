@@ -12,7 +12,7 @@ import { getPageCount, getPagesArray } from './utils/pages';
 import './styles/App.css';
 import Pagination from './UI/pagination/Pagination';
 
-function App() {
+function Posts() {
   const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState({sort: '', query: '',});
   const [modal, setModal] = useState(false)
@@ -90,6 +90,6 @@ function App() {
   );
 }
 
-export default App;
+export default Posts;
 
 //https://youtu.be/GNrdg3PzpJQ?t=7583
